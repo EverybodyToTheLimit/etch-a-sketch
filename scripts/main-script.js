@@ -1,10 +1,14 @@
-let container = document.getElementById('main-container');
-let headerSection = document.getElementById('header-section');
+let container = document.getElementById('main-container');      //Grab object of the main container into variable, might be useful later
+
+let headerSection = document.getElementById('header-section'); //Create button to generate the grid 
 let btn = document.createElement('button');
 btn.textContent = "Generate Divs"
 headerSection.appendChild(btn);
-btn.addEventListener('click', () => {createDivs()});
-function createDivs () {
+
+btn.addEventListener('click', () => {createDivs()});        //Add listener on click, call the generate grid function
+
+
+function createDivs () {        //Main function to create div grid
     for(i=0; i<256; i++) {
         let div = document.createElement('div');
         div.setAttribute("class", "divs");
