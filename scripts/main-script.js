@@ -16,10 +16,17 @@ btn2.addEventListener('click', () => {      //Add listener on click, get input f
 }); 
     
 function rainbowTime (div_name) {       //Function to add on hover class
-    let randomNumber = Math.floor(Math.random() * 256);
-    let randomRgb = "rgb("+randomNumber+","+randomNumber+","+randomNumber+")";
+    let randomRgb = "rgb("+(Math.floor(Math.random() * 256))+","+(Math.floor(Math.random() * 256))+","+(Math.floor(Math.random() * 256))+")";
     // div_name.setAttribute("class", "divs on-hover");
-    div_name.style.cssText += "background-image: linear-gradient(90deg,"+randomRgb+" 0%, "+randomRgb+" 49%, "+randomRgb+" 80%, "+randomRgb+" 100%); animation:slidebg 5s linear infinite;";
+    if (div_name.style.filter == "brightness(100%)") {
+    div_name.style.cssText += "background-color: "+randomRgb+";"
+    div_name.style.filter = "brightness(90%)"; 
+    }
+    else {
+    let howDark = Number(div_name.style.filter.substring(11,13))-10;
+    let teststring = "brightness("+ howDark +"%)"
+    div_name.style.filter = teststring;
+    }
 }
 
 
@@ -32,7 +39,7 @@ function createDivs (num) {        //Main function to create div grid
         let div = document.createElement('div');
         div.setAttribute("class", "divs");
         div.addEventListener('mouseover', () => {rainbowTime(div)})     //adding event listener for on hover
-        div.style.cssText += "display:flex; max-width:" + size +"px; width:" +size+"px; height: " +size+"px; max-height: " + size +"px; background-color:grey;border-color: black; border-width: 2px" //max width is 51 and declared width is 50 to allow for a 1px gap
+        div.style.cssText += "display:flex; max-width:" + size +"px; width:" +size+"px; height: " +size+"px; max-height: " + size +"px; background-color:grey;border-color: black; border-width: 2px; filter: brightness(100%);" //max width is 51 and declared width is 50 to allow for a 1px gap
         container.appendChild(div);
     }
 }
