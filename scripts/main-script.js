@@ -7,8 +7,8 @@ headerSection.appendChild(btn2);
        
 btn2.addEventListener('click', () => {      //Add listener on click, get input from user and validate
     let answer = prompt("Yo, what was that number of cells ya wanted in the grid?");
-    while (answer == null || Number.isInteger(Number(answer)) == false || Number(answer) > 65) {
-        answer = prompt("Sorry buddy. It has to be a number (not a word), and it needs to be maximum 64")
+    while (answer == null || Number.isInteger(Number(answer)) == false || Number(answer) >= 65) {
+        answer = prompt("Sorry buddy. It has to be a number, not a word, can't be negative and needs to be maximum 64")
     }
     createDivs(answer);
 
